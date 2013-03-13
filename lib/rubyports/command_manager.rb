@@ -1,7 +1,11 @@
+# -*- coding: utf-8; -*-
 require 'rubyport/command'
 require 'rubyport/user_intaraction'
 
 
+#
+#
+#
 class Port::CommandManager
   include Port::UserInteraction
 

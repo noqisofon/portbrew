@@ -1,13 +1,6 @@
-require 'rbconfig'
-
-
-module Ports
-  VERSION = "0.0.1"
-end
-
-
+# -*- coding: utf-8; -*-
+require 'rubyports/version'
 require 'rubyports/compatibility'
-
 require 'rubyports/defaults'
 require 'rubyports/deprecate'
 require 'rubyports/errors'
