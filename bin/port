@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-
 require 'rubyports'
 require 'rubyports/port_runner'
 require 'rubyports/exceptions'
@@ -18,3 +17,7 @@ begin
 rescue Port::SystemError => err
   exit err.exit_code
 end
+# Local Variables:
+#   mode: ruby
+#   coding: utf-8
+# End:
