@@ -1,13 +1,13 @@
 # -*- coding: utf-8; -*-
-require 'rubyport/command'
-require 'rubyport/user_intaraction'
+require 'portbrew/command'
+require 'portbrew/user_intaraction'
 
 
 #
 #
 #
-class Port::CommandManager
-  include Port::UserInteraction
+class PortBrew::CommandManager
+  include PortBrew::UserInteraction
 
   #
   #

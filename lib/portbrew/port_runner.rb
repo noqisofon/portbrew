@@ -4,15 +4,15 @@
 #
 # See LICENSE.md for permissions.
 #
-require 'rubyports'
-require 'rubyports/command_manager'
-require 'rubyports/config_file'
+require 'portbrew'
+require 'portbrew/command_manager'
+require 'portbrew/config_file'
 
 
-Port::load_env_plugins rescue nil
+PortBrew::load_env_plugins rescue nil
 
 
-class Port::PortRunner
+class PortBrew::PortRunner
   # オプションハッシュを渡して PortRunner のオブジェクトを作成します。
   #
   # == Parameters:
@@ -20,18 +20,18 @@ class Port::PortRunner
   #    オプション。
   #
   def initialize(options = {})
-    @command_manager_type = options[:command_manager] || Port::CommandManager
-    @config_file_class = options[:config_file] || Port::ConfigFile
+    @command_manager_type = options[:command_manager] || PortBrew::CommandManager
+    @config_file_class = options[:config_file] || PortBrew::ConfigFile
   end
 
-  # Rubyports を走らせます。
+  # Portbrew を走らせます。
   #
   # == Parameters:
   # args::
   #   コマンドラインオプションの配列。
   #
   # == Returns:
-  # 
+  #
   #
   def run(args)
     if args.include '--' then
@@ -43,7 +43,7 @@ class Port::PortRunner
     command = @command_manager_class.instance
 
     command.command_names.each do |command_name|
-      config_args = Port::configuration[command_name]
+      config_args = PortBrew.configuration[command_name]
       config_args = case config_args
                       when String
                       config_args.split ' '
@@ -54,7 +54,7 @@ class Port::PortRunner
       Port::Command.add_specific_extra_args command_name, config_args
     end
 
-    command.run Port::configuration.args, build_args
+    command.run PortBrew::configuration.args, build_args
   end
 
   private
@@ -62,11 +62,11 @@ class Port::PortRunner
   #
   #
   def configuration(args)
-    Port::configuration = port_conf = @config_file_class.new args
-    Port::usr_paths port_conf[:porthome], port_conf[:porthome]
+    PortBrew::configuration = port_conf = @config_file_class.new args
+    PortBrew::usr_paths port_conf[:porthome], port_conf[:porthome]
 
-    Port::Command.extra_args = port_conf[:port]
+    PortBrew::Command.extra_args = port_conf[:port]
   end
 end
 
-Port::load_plugins
+PortBrew::load_plugins

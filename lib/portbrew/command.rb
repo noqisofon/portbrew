@@ -2,16 +2,16 @@
 
 require 'optparse'
 
-require 'rubyports/requirement'
-require 'rubyports/user_interaction'
+require 'portbrew/requirement'
+require 'portbrew/user_interaction'
 
 
 #
-# rubyports のサブコマンドを表します。
+# portbrew のサブコマンドを表します。
 #
 #
-class Port::Command
-  include Port::UserIntaraction
+class PortBrew::Command
+  include PortBrew::UserIntaraction
 
   # コマンド名。
   attr_reader :command
@@ -139,7 +139,7 @@ class Port::Command
   #
   #
   def execute
-    raise Port::Exception, "generic command has no actions"
+    raise PortBrew::Exception, "generic command has no actions"
   end
 
   #
@@ -169,7 +169,7 @@ class Port::Command
     args = options[:args]
 
     if args.nil? or args.empty? then
-      raise Port::CommandLineError, "Please specify at least one port name (e.g. port build PORTNAME)"
+      raise PortBrew::CommandLineError, "Please specify at least one port name (e.g. port build PORTNAME)"
     end
 
     args.select { |arg| arg !~ /^-/ }
@@ -180,7 +180,7 @@ class Port::Command
   #
   def get_all_port_names_and_versions
     get_all_port_names.map do |name|
-      if /\A(.*):(#{Port::Requirement::PATTERN_RAW})\z/ =~ name then
+      if /\A(.*):(#{PortBrew::Requirement::PATTERN_RAW})\z/ =~ name then
         [ $1, $2 ]
       else
         [ name ]
@@ -378,6 +378,5 @@ class Port::Command
     return nil if content.empty?
 
     @parser.separator nil
-    
   end
 end

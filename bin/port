@@ -1,20 +1,20 @@
 #!/usr/bin/env ruby
-require 'rubyports'
-require 'rubyports/port_runner'
-require 'rubyports/exceptions'
+require 'portbrew'
+require 'portbrew/port_runner'
+require 'portbrew/exceptions'
 
 
-required_version = Port::Requirement.new ">= 1.8.7"
+required_version = PortBrew::Requirement.new ">= 1.8.7"
 
-unless required_version.satisfied_by? Port::ruby_version then
-  abort "Expected Ruby version #{required_version} is #{Port::ruby_version}"
+unless required_version.satisfied_by? PortBrew::ruby_version then
+  abort "Expected Ruby version #{required_version} is #{PortBrew::ruby_version}"
 end
 
 args = ARGV.clone
 
 begin
-  Port::PortRunner.new.run args
-rescue Port::SystemError => err
+  PortBrew::PortRunner.new.run args
+rescue PortBrew::SystemError => err
   exit err.exit_code
 end
 # Local Variables:

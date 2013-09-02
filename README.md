@@ -1,11 +1,11 @@
-RubyPorts
+PortBrew
 ======================================================================
 
 <table>
  <tbody>
   <tr>
    <td>Source</td>
-   <td> <a href="http://github.com/noqisofon/rubyports">github.com/noqisofon/rubyports</a> </td>
+   <td> <a href="http://github.com/noqisofon/portbrew">github.com/noqisofon/portbrew</a> </td>
   </tr>
  </tbody>
 </table>
@@ -13,10 +13,21 @@ RubyPorts
 Description
 ----------------------------------------------------------------------
 
-RubyPorts は RubyGems にリスペクトされたパッケージ管理ツールであり、パッケージ管理フレームワークです。  
+PortBrew は RubyGems にリスペクトされたパッケージ管理ツールであり、パッケージ管理フレームワークです。  
 その名の通り Ports の RubyGems 風のラッパーです。
 
-RubyPorts 自体をアップグレードする場合はこの様に打ってください:
+PortBrew 自体をアップグレードする場合は次の様に打ってください:
 
-    $ sudo port update --system
+    # port update --system
 
+インストール済みのパッケージを更新するには:
+
+    # port update --all
+
+または:
+
+    # port update
+
+zsh をインストールするには次の様に打ちます:
+
+    # port install zsh

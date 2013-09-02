@@ -1,8 +1,8 @@
 # -*- coding: utf-8; -*-
-require 'rubyports/environment'
+require 'portbrew/environment'
 
 
-module Port
+module PortBrew
 
   class Version
     MAJOR = 0

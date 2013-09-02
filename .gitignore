@@ -1,3 +1,7 @@
+# -*- coding: utf-8; -*-
 # Emacs temporary file
 *~
 \#*#
+
+# Mac OS X files
+.DS_Store
